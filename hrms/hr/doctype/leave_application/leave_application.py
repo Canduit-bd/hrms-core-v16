@@ -600,6 +600,8 @@ class LeaveApplication(Document, PWANotificationsMixin):
 		)
 
 	def validate_attendance(self):
+		if self.half_day:
+			return
 		attendance_dates = frappe.get_all(
 			"Attendance",
 			filters=[
